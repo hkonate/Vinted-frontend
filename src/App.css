@@ -2,6 +2,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 /* GENERAL RULES */
+a {
+  text-decoration: none;
+}
 * {
   box-sizing: border-box;
   font-family: "merriweather";
@@ -11,8 +14,9 @@
   margin: 0 auto;
 }
 img {
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
 }
 /* NAV */
 nav {
@@ -41,7 +45,6 @@ nav {
 nav img {
   width: 102px;
   height: 40px;
-  object-fit: cover;
   margin-right: 30px;
 }
 
@@ -99,8 +102,8 @@ nav img {
 }
 
 .banner img {
-  object-fit: cover;
   width: 100%;
+  height: 100%;
 }
 
 .block {
@@ -130,4 +133,88 @@ nav img {
   border: none;
   color: white;
   border-radius: 4px;
+}
+
+/* USERS - BOX */
+
+.users-container {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+
+.user-box {
+  margin-top: 28px;
+}
+
+.avatar-box {
+  display: flex;
+  align-items: center;
+}
+.avatar-box > img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: none;
+  margin-right: 10px;
+  margin-left: 20px;
+}
+
+.avatar-box > p {
+  color: #999999;
+  font-size: 12px;
+}
+
+.product-pic img {
+  width: 235px;
+  height: 360px;
+  margin: 10px;
+}
+
+.product-infos {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.product-infos > span {
+  margin-bottom: 4px;
+}
+
+.product-infos > span:nth-child(1) {
+  font-size: 14px;
+}
+
+.product-infos > span:nth-child(2),
+.product-infos > span:nth-child(3) {
+  color: #999999;
+  font-size: 12px;
+}
+
+.Offer {
+  background-color: #ebedee;
+  width: 100%;
+  height: 100vh;
+}
+.offer-box {
+  max-width: 1084px;
+  height: 600px;
+  margin: 0 auto;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.left {
+  width: 455px;
+  height: 100%;
+}
+.left > img {
+  width: 100%;
+  height: 100%;
+}
+
+.right {
+  width: 400px;
+  height: 100%;
+  background-color: white;
 }

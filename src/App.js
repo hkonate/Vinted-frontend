@@ -35,7 +35,7 @@ function App() {
       </div>
       <Routes>
         <Route path='/Home' element={<Home data={data} setData={setData} />} />
-        <Route path='/Offer' element={<Offer />} />
+        <Route path='Home/Offer/:productId' element={<Offer data={data} setData={setData} />} />
       </Routes>
     </Router>))
 }
