@@ -168,7 +168,7 @@ nav img {
 .product-pic img {
   width: 235px;
   height: 360px;
-  margin: 10px;
+  padding: 0 5px;
 }
 
 .product-infos {
@@ -191,6 +191,8 @@ nav img {
   font-size: 12px;
 }
 
+/* OFFER PAGE */
+
 .Offer {
   background-color: #ebedee;
   width: 100%;
@@ -198,7 +200,7 @@ nav img {
 }
 .offer-box {
   max-width: 1084px;
-  height: 600px;
+  height: 650px;
   margin: 0 auto;
   padding-top: 30px;
   display: flex;
@@ -217,4 +219,69 @@ nav img {
   width: 400px;
   height: 100%;
   background-color: white;
+  padding: 30px 40px;
+  position: relative;
+}
+
+.product-details > p {
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 20px;
+}
+
+.product-details li {
+  display: flex;
+}
+.product-details li > span:nth-child(odd) {
+  color: #999999;
+  font-size: 14px;
+  flex: 1 1;
+}
+.product-details li > span:nth-child(even) {
+  color: #666666;
+  flex: 1 1;
+  font-size: 14px;
+  font-weight: bold;
+}
+.product-details li > span {
+  margin-bottom: 10px;
+}
+.line {
+  margin: 45px 0;
+  border-bottom: solid 1px #9999;
+}
+.offer-descp > p {
+  font-size: 18.5px;
+}
+.offer-descp > p:first-child {
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.offer-descp > p:nth-child(2) {
+  color: #666666;
+  margin-bottom: 20px;
+}
+.offer-avatar {
+  display: flex;
+  align-items: center;
+}
+.offer-avatar > img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  margin-right: 10px;
+}
+.offer-avatar > p {
+  font-size: 18px;
+}
+.right > button {
+  width: 100%;
+  height: 37px;
+  color: white;
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-top: 60px;
 }
