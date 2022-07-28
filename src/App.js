@@ -26,7 +26,7 @@ function App() {
       setIsLoading(false);
     }
     fetchData()
-  }, [])
+  }, [data])
   return (isLoading ?
     (<span>En cours de chargement... </span>) :
     (<Router>

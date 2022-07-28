@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const Offer = ({ data, setData }) => {
     const { productId } = useParams()
@@ -63,8 +63,6 @@ const Offer = ({ data, setData }) => {
                                     </div>}
 
                             </div>
-
-                            {/* <Link to="/">Home</Link> */}
                             <button>Acheter</button>
                         </div>
 

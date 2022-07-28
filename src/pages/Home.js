@@ -37,7 +37,6 @@ const Home = ({ data, setData }) => {
                     )
                 })}
             </div>
-            <Link to='/Offer'>Offer pages</Link>
         </div >
     )
 }
