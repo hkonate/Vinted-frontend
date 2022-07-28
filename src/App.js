@@ -22,7 +22,6 @@ function App() {
     const fetchData = async () => {
       const response = await axios.get("https://lereacteur-vinted-api.herokuapp.com/offers");
       setData(response.data);
-      console.log(data);
       setIsLoading(false);
     }
     fetchData()
@@ -35,7 +34,7 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<Home data={data} setData={setData} />} />
-        <Route path='/Offer/:productId' element={<Offer data={data} setData={setData} />} />
+        <Route path='/Offer/:productId' element={<Offer />} />
       </Routes>
     </Router>))
 }

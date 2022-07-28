@@ -1,74 +1,59 @@
+import axios from 'axios'
 import { useParams } from 'react-router-dom'
-
-const Offer = ({ data, setData }) => {
+import { useState, useEffect } from 'react'
+const Offer = () => {
+    const [data, setData] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
     const { productId } = useParams()
-    return (
-        data.offers.map((user, index) => {
-            return (
-                user._id === productId &&
-                <div className='Offer'>
-                    <div className='offer-box'>
-                        <div className='left'>
-                            <img key={index} src={user.product_image.secure_url} alt="product-pic" />
-                        </div>
-                        <div className='right'>
-                            <div className='product-details'>
-                                <p>{user.product_price} €</p>
-                                {user.product_details.map((product, index) => {
-                                    return (
-                                        <ul key={index}>
-                                            {product.MARQUE &&
-                                                <li>
-                                                    <span>Marque</span>
-                                                    <span>{product.MARQUE}</span>
-                                                </li>
-                                            }
 
-                                            {product.TAILLE &&
-                                                <li>
-                                                    <span>TAILLE</span>
-                                                    <span>{product.TAILLE}</span>
-                                                </li>
-                                            }
-                                            {product.ÉTAT &&
-                                                <li>
-                                                    <span>ETAT</span>
-                                                    <span>{product.ÉTAT}</span>
-                                                </li>
-                                            }
-                                            {product.COULEUR &&
-                                                <li>
-                                                    <span>COULEUR</span>
-                                                    <span>{product.COULEUR}</span>
-                                                </li>
-                                            }
-                                            {product.EMPLACEMENT &&
-                                                <li>
-                                                    <span>EMPLACEMENT</span>
-                                                    <span>{product.EMPLACEMENT}</span>
-                                                </li>
-                                            }
-                                        </ul>)
-                                })
-                                }
-                            </div>
-                            <div className='line'></div>
-                            <div className='offer-descp'>
-                                {user.product_name && <p>{user.product_name}</p>}
-                                {user.product_description && <p>{user.product_description}</p>}
-                                {user.owner &&
-                                    <div className='offer-avatar'>
-                                        <img src={user.owner.account.avatar.secure_url} alt="" />
-                                        <p>{user.owner.account.username}</p>
-                                    </div>}
+    useEffect(() => {
+        const fetchOffer = async () => {
+            const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offer/${productId}`);
+            setData(response.data);
+            console.log(data)
+            setIsLoading(false);
+        };
+        fetchOffer();
+    }, [data, productId])
 
-                            </div>
-                            <button>Acheter</button>
-                        </div>
+    return (isLoading ? (<span>En cours de chargement... </span>) :
+
+        <div className='Offer'>
+            <div className='offer-box'>
+                <div className='left'>
+                    <img src={data.product_image.secure_url} alt="product-pic" />
+                </div>
+                <div className='right'>
+                    <div className='product-details'>
+                        <p>{data.product_price} €</p>
+                        {data.product_details.map((product, index) => {
+                            const keys = Object.keys(product)
+                            console.log(keys);
+                            return (
+                                <li key={index}>
+                                    <span>{keys[0]}</span>
+                                    <span>{product[keys[0]]}</span>
+                                </li>)
+                        })
+                        }
+                    </div>
+                    <div className='line'></div>
+                    <div className='offer-descp'>
+                        <p>{data.product_name}</p>
+                        <p>{data.product_description}</p>
+                        {data.owner &&
+                            <div className='offer-avatar'>
+                                <img src={data.owner.account.avatar.secure_url} alt="avatar" />
+                                <p>{data.owner.account.username}</p>
+                            </div>}
 
                     </div>
+                    <button>Acheter</button>
+                </div>
 
-                </div>)
-        }))
+            </div>
+
+        </div>
+    )
 }
 export default Offer
