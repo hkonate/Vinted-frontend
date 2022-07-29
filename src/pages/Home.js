@@ -13,7 +13,7 @@ const Home = ({ data, setData }) => {
             </div>
             <div className='users-container container'>
                 {data.offers.map((user, index) => {
-                    console.log(user)
+                    // console.log(user)
                     return (
 
                         <div key={index} className='user-box'>

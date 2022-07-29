@@ -76,7 +76,7 @@ nav img {
   color: #2cb1ba;
 }
 
-.btn-logs button:first-child {
+.btn-logs > a button {
   margin-right: 10px;
 }
 
@@ -84,6 +84,7 @@ nav img {
   width: 114px;
   height: 30px;
   border-radius: 4px;
+  cursor: pointer;
 }
 .btn-sell button {
   background-color: #2cb1ba;
@@ -91,6 +92,12 @@ nav img {
   color: white;
   margin-left: 60px;
   font-size: 12px;
+}
+.btns .btn-disconnect {
+  color: white;
+  background-color: #c2175b;
+  border: none;
+  margin-right: 51px;
 }
 
 /* HOME PAGE */
@@ -284,4 +291,48 @@ nav img {
   border-radius: 4px;
   font-size: 16px;
   margin-top: 60px;
+}
+
+/* SIGNUP PAGE */
+
+.signup-box {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.signup-box > h2 {
+  font-size: 24px;
+  font-weight: 400;
+  margin: 30px 0;
+}
+.signup-box > form {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 275px;
+}
+
+.signup-box input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.checkbox {
+  display: flex;
+  height: auto;
+  align-items: center;
+}
+
+.checkbox input {
+  transform: scale(2);
+  margin-right: 20px;
+}
+
+.checkbox > span {
+  font-size: 18px;
 }

@@ -14,7 +14,7 @@ const Offer = () => {
             setIsLoading(false);
         };
         fetchOffer();
-    }, [data, productId])
+    }, [])
 
     return (isLoading ? (<span>En cours de chargement... </span>) :
 

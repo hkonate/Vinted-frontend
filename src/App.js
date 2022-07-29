@@ -4,11 +4,13 @@ import { useState, useEffect } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
+
 import './App.css';
 
 //PAGE 
 import Home from './pages/Home'
 import Offer from './pages/Offer'
+import SignUp from './pages/SignUp'
 
 // Components
 import Header from './components/Header'
@@ -25,7 +27,8 @@ function App() {
       setIsLoading(false);
     }
     fetchData()
-  }, [data])
+  }, [])
+
   return (isLoading ?
     (<span>En cours de chargement... </span>) :
     (<Router>
@@ -34,6 +37,7 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<Home data={data} setData={setData} />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path='/Offer/:productId' element={<Offer />} />
       </Routes>
     </Router>))
