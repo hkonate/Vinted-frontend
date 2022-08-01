@@ -13,16 +13,16 @@ const Home = ({ data, setData }) => {
             </div>
             <div className='users-container container'>
                 {data.offers.map((user, index) => {
-                    // console.log(user)
                     return (
 
                         <div key={index} className='user-box'>
-                            {user.owner &&
+                            {user.owner && (
+                                user.owner.account.avatar &&
                                 <div className='avatar-box'>
                                     <img src={user.owner.account.avatar.secure_url} alt="avatar" />
                                     <p>{user.owner.account.username}</p>
-                                </div>}
-                            <div className='product-pic' style={{ "margin-top": !user.owner && "25px" }}>
+                                </div>)}
+                            <div className='product-pic' style={{ "margin-top": (!user.owner && "25px") || (!user.owner.account.avatar && '25px') }}>
                                 <Link to={`Offer/${user._id}`}>
                                     <img src={user.product_image.secure_url} alt="product-pic" />
                                 </Link>

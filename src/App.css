@@ -334,5 +334,31 @@ nav img {
 }
 
 .checkbox > span {
-  font-size: 18px;
+  font-size: 20px;
+  padding-bottom: 15px;
+  color: #848484;
+}
+
+.terms {
+  font-size: 15px;
+  color: #999999;
+  text-align: justify;
+  padding-bottom: 40px;
+}
+form > button {
+  height: 47px;
+  color: white;
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+form > :last-child {
+  font-size: 15px;
+  color: #2cb1ba;
+  margin-top: 20px;
+}
+
+.login button {
+  margin-top: 20px;
 }
