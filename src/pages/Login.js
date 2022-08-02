@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-const Login = ({ setUser }) => {
+const Login = ({ setUser, fromPublish }) => {
     const [errormsg, setErrorMsg] = useState();
     const [userData, setUserData] = useState("", "")
     const navigate = useNavigate()
@@ -16,7 +16,12 @@ const Login = ({ setUser }) => {
                 });
             if (response.data) {
                 setUser(response.data.token)
-                navigate('/')
+                if (fromPublish) {
+                    navigate('/publish')
+                } else {
+                    navigate('/')
+                }
+
             }
         } catch (error) {
             if (error.response.status === 400) {
@@ -38,7 +43,6 @@ const Login = ({ setUser }) => {
                 newUserData[1] = event.target.value;
                 setUserData(newUserData);
             }} />
-
             <button>Se connecter</button>
             {errormsg && <p style={{ color: 'red', "font-size": "12px", "margin-top": "15px" }}>{errormsg}</p>}
             <Link to="/Signup"><p>Pas encore de compte ? Inscris-toi !</p></Link>

@@ -46,6 +46,7 @@ nav img {
   width: 102px;
   height: 40px;
   margin-right: 30px;
+  cursor: pointer;
 }
 
 .nav-input svg {
@@ -64,6 +65,21 @@ nav img {
   border-radius: 5px;
 }
 
+#limit-select {
+  position: absolute;
+  top: 60px;
+  left: 1050px;
+  width: 130px;
+  border: solid 1px white;
+  color: white;
+  background-color: #2cb1ba;
+  height: 35px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+option:first-child {
+  display: none;
+}
 /* BUTTONS */
 .btns,
 .btn-logs {
@@ -142,6 +158,26 @@ nav img {
   border-radius: 4px;
 }
 
+.pagination-block {
+  width: 100%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination-block span {
+  font-size: 18px;
+  color: #2cb1ba;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.each-page {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 /* USERS - BOX */
 
 .users-container {
@@ -361,4 +397,133 @@ form > :last-child {
 
 .login button {
   margin-top: 20px;
+}
+
+/* PUBLISH */
+.Publish {
+  background-color: #ebedee;
+  height: 100%;
+  padding-top: 45px;
+}
+.Publish h2 {
+  font-size: 22px;
+  margin-bottom: 26px;
+}
+.Publish form {
+  padding-bottom: 70px;
+}
+.Publish form > div:not(.publish-btn) {
+  margin-bottom: 40px;
+  box-shadow: 0 0 2px grey;
+  background-color: white;
+}
+.Publish form > div:first-child {
+  background-color: white;
+  height: 250px;
+  padding: 23px;
+}
+.Publish form > div > div {
+  border-bottom: 1px solid #ebedee;
+  padding: 24px;
+}
+.doted-box {
+  height: 100%;
+  border: dotted 2px #ebedee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.doted-box label {
+  border: #2cb1ba solid 1px;
+  height: 45px;
+  width: 201px;
+  color: #2cb1ba;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: bold;
+}
+.preview {
+  position: relative;
+  bottom: 170px;
+  right: -445px;
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding-top: 2px;
+  border-radius: 4px;
+}
+label > svg {
+  color: #2cb1ba;
+  font-size: 30px;
+}
+.doted-box input {
+  display: none;
+}
+.Publish form input:not(.check-publish),
+.Publish form textarea {
+  border: none;
+  resize: none;
+  outline: none;
+  flex: 1 1;
+  border-bottom: 1px solid #ebedee;
+  color: #848484;
+  font-size: 18px;
+}
+.space:not(.textarea, .exchange) {
+  display: flex;
+  height: 74px;
+}
+.textarea {
+  display: flex;
+  outline-color: red;
+}
+.space > span {
+  flex: 1 1;
+  font-size: 20px;
+}
+.exchange {
+  height: 130px;
+  display: flex;
+}
+.exchange > div {
+  display: flex;
+  flex-direction: column;
+}
+.exchange-price {
+  flex: 1 1;
+}
+.check-publish {
+  margin-right: 20px;
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+.exchange-price > .space {
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+}
+.Publish form > .publish-btn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.publish-btn > button {
+  width: 88px;
+  height: 45px;
+  padding-top: 2px;
+  color: white;
+  background-color: #2cb1ba;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+.Publish form input:focus,
+.Publish form textarea:focus {
+  border-bottom: solid 1px #2cb1ba;
 }
