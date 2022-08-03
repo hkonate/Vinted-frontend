@@ -1,21 +1,19 @@
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 const Offer = () => {
     const [data, setData] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const { productId } = useParams()
-
+    const navigate = useNavigate()
     useEffect(() => {
         const fetchOffer = async () => {
             const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offer/${productId}`);
             setData(response.data);
-            console.log(data)
             setIsLoading(false);
         };
         fetchOffer();
     }, [])
-
     return (isLoading ? (<span>En cours de chargement... </span>) :
 
         <div className='Offer'>
@@ -28,7 +26,6 @@ const Offer = () => {
                         <p>{data.product_price} €</p>
                         {data.product_details.map((product, index) => {
                             const keys = Object.keys(product)
-                            console.log(keys);
                             return (
                                 <li key={index}>
                                     <span>{keys[0]}</span>
@@ -42,13 +39,16 @@ const Offer = () => {
                         <p>{data.product_name}</p>
                         <p>{data.product_description}</p>
                         {data.owner &&
+                            data.owner.account.avatar &&
                             <div className='offer-avatar'>
                                 <img src={data.owner.account.avatar.secure_url} alt="avatar" />
                                 <p>{data.owner.account.username}</p>
                             </div>}
 
                     </div>
-                    <button>Acheter</button>
+                    <button onClick={() => {
+                        navigate('/payment', { state: { title: data.product_name, price: data.product_price } })
+                    }}>Acheter</button>
                 </div>
 
             </div>

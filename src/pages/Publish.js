@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const Publish = ({ token, setFromPublish }) => {
     const [picture, setPicture] = useState(null)
     const navigate = useNavigate()
-    const [newPublish, setNewPublish] = useState(["", "", "", "", "", "", "", "", false])
+    const [newPublish, setNewPublish] = useState([null, null, null, null, null, null, null, null, false])
     const [picDisplay, setPicDisplay] = useState(null)
     const [revoke, setRevoke] = useState(true)
 
@@ -21,12 +21,12 @@ const Publish = ({ token, setFromPublish }) => {
             const formData = new FormData();
             formData.append("title", newPublish[0])
             formData.append("description", newPublish[1])
-            formData.append("price", newPublish[2])
-            formData.append("condition", newPublish[3])
-            formData.append("city", newPublish[4])
-            formData.append("brand", newPublish[5])
-            formData.append("size", newPublish[6])
-            formData.append("color", newPublish[7])
+            formData.append("price", newPublish[7])
+            formData.append("condition", newPublish[5])
+            formData.append("city", newPublish[6])
+            formData.append("brand", newPublish[3])
+            formData.append("size", newPublish[4])
+            formData.append("color", newPublish[2])
             formData.append("picture", picture)
 
             const response = await axios.post("https://lereacteur-vinted-api.herokuapp.com/offer/publish", formData,
@@ -36,6 +36,7 @@ const Publish = ({ token, setFromPublish }) => {
                         "content-type": "multipart/form-data"
                     }
                 })
+            console.log(response.data)
             if (response.data._id) {
                 navigate(`/Offer/${response.data._id}`)
             }
@@ -53,7 +54,7 @@ const Publish = ({ token, setFromPublish }) => {
                         <div>
                             <div className="doted-box">
                                 {revoke ?
-                                    <label for="addpicture">
+                                    <label htmlFor="addpicture">
                                         <FontAwesomeIcon icon="plus" />
                                         <input onChange={(event) => {
                                             setPicture(event.target.files[0])
@@ -62,7 +63,7 @@ const Publish = ({ token, setFromPublish }) => {
                                         }} id="addpicture" type="file" placeholder='Ajouter une photo' />
                                         <span>Ajoute une photo</span>
                                     </label> : <div>
-                                        <img src={picDisplay} alt="pic" style={{ width: "470px", height: "100%" }} />
+                                        <img src={picDisplay} alt="pic" /*style={{ width: "165px", height: "90%" }}*/ />
                                         <div style={{ cursor: "pointer" }} onClick={() => {
                                             setRevoke(true)
                                         }} className='preview'>X</div>

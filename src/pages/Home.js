@@ -44,7 +44,7 @@ const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit }) => {
                                     <img src={user.owner.account.avatar.secure_url} alt="avatar" />
                                     <p>{user.owner.account.username}</p>
                                 </div>)}
-                            <div className='product-pic' style={{ "margin-top": (!user.owner && "25px") || (!user.owner.account.avatar && '25px') }}>
+                            <div className='product-pic' style={{ marginTop: (!user.owner && "25px") || (!user.owner.account.avatar && '25px') }}>
                                 <Link to={`Offer/${user._id}`}>
                                     <img src={user.product_image.secure_url} alt="product-pic" />
                                 </Link>

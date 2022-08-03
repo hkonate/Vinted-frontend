@@ -5,8 +5,6 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Header = ({ setUser, token, setFromPublish, fromPublish, currenOffersView, setCurrentOffersView }) => {
     const navigate = useNavigate()
-
-    // console.log(limit);
     return (
         <nav>
             <div className='nav-input'>

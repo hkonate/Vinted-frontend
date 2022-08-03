@@ -14,7 +14,6 @@ a {
   margin: 0 auto;
 }
 img {
-  width: 100px;
   height: 100px;
   object-fit: cover;
 }
@@ -432,6 +431,7 @@ form > :last-child {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 200px;
 }
 .doted-box label {
   border: #2cb1ba solid 1px;
@@ -445,9 +445,9 @@ form > :last-child {
   font-weight: bold;
 }
 .preview {
-  position: relative;
-  bottom: 170px;
-  right: -445px;
+  position: absolute;
+  top: 230px;
+  left: 1085px;
   background-color: white;
   width: 20px;
   height: 20px;
@@ -526,4 +526,85 @@ label > svg {
 .Publish form input:focus,
 .Publish form textarea:focus {
   border-bottom: solid 1px #2cb1ba;
+}
+
+/* Payment */
+
+.payment {
+  height: 100%;
+  background-color: #848484;
+  padding-top: 50px;
+}
+.pay-container {
+  width: 604px;
+  height: 504px;
+  background-color: white;
+  margin: 0 auto 80px auto;
+}
+.pay-container > div:not(.split-pay) {
+  padding: 20px;
+}
+.payment form {
+  padding: 0 20px;
+}
+.details-cmd > h4 {
+  font-size: 18px;
+  color: #999999;
+  margin-bottom: 45px;
+}
+
+.details-cmd > div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.details-cmd > div:last-child {
+  margin-bottom: 50px;
+}
+
+.details-cmd > div > span {
+  font-size: 20px;
+  color: #666666;
+}
+
+.split-pay {
+  border: #ebedee solid 1px;
+  width: 100%;
+}
+
+.recap-total > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: #111111;
+  margin-bottom: 55px;
+}
+
+.payment p {
+  font-size: 18px;
+  padding-bottom: 30px;
+  border-bottom: #ebedee solid 1px;
+}
+
+.payment p > span {
+  font-weight: 700;
+}
+
+.payment form > div {
+  box-shadow: 0 1px 3px rgba(50, 50, 93, 0.149), 0 1px 0 rgba(0, 0, 0, 0.02);
+  border-radius: 5px;
+  height: 40px;
+  padding: 12px 20px 0 20px;
+  margin-top: 5px;
+}
+
+.payment button {
+  width: 100%;
+  color: white;
+  background-color: #00bb6a;
+}
+
+.purchase-done {
+  margin-left: 20px;
 }

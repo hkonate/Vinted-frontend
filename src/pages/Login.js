@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-const Login = ({ setUser, fromPublish }) => {
+const Login = ({ setUser, fromPublish, setUserId }) => {
     const [errormsg, setErrorMsg] = useState();
     const [userData, setUserData] = useState("", "")
     const navigate = useNavigate()
@@ -15,6 +15,7 @@ const Login = ({ setUser, fromPublish }) => {
                     password: userData[1]
                 });
             if (response.data) {
+                setUserId(response.data._id);
                 setUser(response.data.token)
                 if (fromPublish) {
                     navigate('/publish')
