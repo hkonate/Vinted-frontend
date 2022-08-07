@@ -26,7 +26,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [limit, setLimit] = useState(data.count)
   const [currentPage, setCurrentPage] = useState(1)
-  const [userId, setUserId] = useState(null)
+  const [username, setUsername] = useState(null)
 
   const pageNum = Math.floor(data.count / limit)
   const stripePromise = loadStripe("pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP");
@@ -57,13 +57,13 @@ function App() {
       </div>
       <Routes>
         <Route path='/' element={<Home data={data} limit={limit} currentPage={currentPage} setCurrentPage={setCurrentPage} pageNum={pageNum} setLimit={setLimit} />} />
-        <Route path="/Login" element={<Login setUser={setUser} fromPublish={fromPublish} setUserId={setUserId} />}></Route>
+        <Route path="/Login" element={<Login setUser={setUser} fromPublish={fromPublish} setUsername={setUsername} />}></Route>
         <Route path="/Signup" element={<SignUp setUser={setUser} />} />
         <Route path='/Offer/:productId' element={<Offer />} />
         <Route path='/publish' element={<Publish token={token} setFromPublish={setFromPublish} />}></Route>
 
         <Route path='/payment' element={<Elements stripe={stripePromise}>
-          <Payment userId />
+          <Payment username={username} token={token} />
         </Elements>}></Route>
       </Routes>
     </Router>)

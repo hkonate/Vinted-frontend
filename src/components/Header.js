@@ -3,7 +3,7 @@ import logo from '../img/logo.jpg'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-const Header = ({ setUser, token, setFromPublish, fromPublish, currenOffersView, setCurrentOffersView }) => {
+const Header = ({ setUser, token, setFromPublish, fromPublish }) => {
     const navigate = useNavigate()
     return (
         <nav>
