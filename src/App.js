@@ -20,6 +20,7 @@ import Header from './components/Header'
 
 library.add(faMagnifyingGlass, faPlus);
 function App() {
+  //States
   const [fromPublish, setFromPublish] = useState(false)
   const [token, setToken] = useState(Cookies.get("userToken") || null)
   const [data, setData] = useState({})
@@ -31,6 +32,7 @@ function App() {
   const pageNum = Math.floor(data.count / limit)
   const stripePromise = loadStripe("pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP");
 
+  //Set Cookie when logged and remove Cookie when disconnect
   const setUser = (token) => {
     if (token !== null) {
       Cookies.set("userToken", token)
@@ -56,7 +58,7 @@ function App() {
         <Header setUser={setUser} token={token} setFromPublish={setFromPublish} fromPublish={fromPublish} />
       </div>
       <Routes>
-        <Route path='/' element={<Home data={data} limit={limit} currentPage={currentPage} setCurrentPage={setCurrentPage} pageNum={pageNum} setLimit={setLimit} />} />
+        <Route path='/' element={<Home setUser={setUser} setFromPublish={setFromPublish} fromPublish={fromPublish} token={token} data={data} limit={limit} currentPage={currentPage} setCurrentPage={setCurrentPage} pageNum={pageNum} setLimit={setLimit} />} />
         <Route path="/Login" element={<Login setUser={setUser} fromPublish={fromPublish} setUsername={setUsername} />}></Route>
         <Route path="/Signup" element={<SignUp setUser={setUser} />} />
         <Route path='/Offer/:productId' element={<Offer />} />

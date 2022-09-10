@@ -31,19 +31,21 @@ const Login = ({ setUser, fromPublish, setUsername }) => {
 
         }
     }
+
+    const inputs = [{ type: "email", placeholder: "Email" }, { type: "password", placeholder: "Mot de passe" }]
+
     return <div className="signup-box login">
         <h2>S'inscrire</h2>
         <form onSubmit={handleConnect}>
-            <input type="email" placeholder="Email" onChange={event => {
-                const newUserData = [...userData];
-                newUserData[0] = event.target.value;
-                setUserData(newUserData);
-            }} />
-            <input type="password" placeholder="Mot de passe" onChange={event => {
-                const newUserData = [...userData];
-                newUserData[1] = event.target.value;
-                setUserData(newUserData);
-            }} />
+            {
+                inputs.map((obj, index) => {
+                    return <input type={obj.type} placeholder={obj.placeholder} onChange={event => {
+                        const newUserData = [...userData];
+                        newUserData[index] = event.target.value;
+                        setUserData(newUserData);
+                    }} />
+                })
+            }
             <button>Se connecter</button>
             {errormsg && <p style={{ color: 'red', "font-size": "12px", "margin-top": "15px" }}>{errormsg}</p>}
             <Link to="/Signup"><p>Pas encore de compte ? Inscris-toi !</p></Link>

@@ -36,13 +36,23 @@ const Payment = ({ username, token }) => {
 
     };
 
+    const orderInfos = [{ name: "Commande", price: price }, { name: "Frais protection acheteurs", price: "1.00 €" }, { name: "Frais de port", price: "2.00 €" }]
+
     return (
         token ?
             (<div className="payment">
                 <div className="pay-container">
                     <div className="details-cmd">
                         <h4>Résumé de la commande</h4>
-                        <div>
+                        {
+                            orderInfos.map(obj => {
+                                return <div>
+                                    <span>{obj.name}</span>
+                                    <span>{obj.price}</span>
+                                </div>
+                            })
+                        }
+                        {/* <div>
                             <span>Commande</span>
                             <span>{price} €</span>
                         </div>
@@ -51,9 +61,9 @@ const Payment = ({ username, token }) => {
                             <span>1.00 €</span>
                         </div>
                         <div>
-                            <span>Frais de port </span>
+                            <span>Frais de port</span>
                             <span>2.00 €</span>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="split-pay"></div>
                     <div className="recap-total">

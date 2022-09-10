@@ -5,12 +5,12 @@ const SignUp = ({ setUser }) => {
     const [userData, setUserData] = useState(["", "", "", false])
     const [errormgs, setErrorMsg] = useState()
     const navigate = useNavigate()
+    const inputs = [{ type: "text", placeholder: "Nom d'utilisateur" }, { type: "email", placeholder: "Email" }, { type: "password", placeholder: "Mot de passe" }]
+
     const handleSubmit = async (event) => {
         try {
             setErrorMsg('')
-
             event.preventDefault();
-
             const response = await axios.post('https://lereacteur-vinted-api.herokuapp.com/user/signup',
                 {
                     "email": userData[0],
@@ -22,33 +22,24 @@ const SignUp = ({ setUser }) => {
                 setUser(response.data.token)
                 navigate('/')
             }
-
         } catch (error) {
             if (error.response.status === 409) {
                 setErrorMsg('Cet email a déja un compte !')
             }
         }
-
     }
-
     return <div className="signup-box">
         <h2>S'inscrire</h2>
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Nom d'utilisateur" onChange={event => {
-                const newUserData = [...userData];
-                newUserData[0] = event.target.value;
-                setUserData(newUserData);
-            }} />
-            <input type="email" placeholder="Email" onChange={event => {
-                const newUserData = [...userData];
-                newUserData[1] = event.target.value;
-                setUserData(newUserData);
-            }} />
-            <input type="password" placeholder="Mot de passe" onChange={event => {
-                const newUserData = [...userData];
-                newUserData[2] = event.target.value;
-                setUserData(newUserData);
-            }} />
+            {
+                inputs.map((obj, index) => {
+                    return <input type={obj.type} placeholder={obj.placeholder} onChange={event => {
+                        const newUserData = [...userData];
+                        newUserData[index] = event.target.value;
+                        setUserData(newUserData);
+                    }} />
+                })
+            }
             <div className="checkbox">
                 <input onClick={event => {
                     const newUserData = [...userData];

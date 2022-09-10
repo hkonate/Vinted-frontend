@@ -10,7 +10,7 @@ a {
   font-family: "merriweather";
 }
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 img {
@@ -23,12 +23,13 @@ nav {
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
+  width: 100%;
 }
 
 .nav-input {
   display: flex;
   align-items: center;
-  width: 796px;
+  width: calc(65% + 30px);
   margin-right: 30px;
 }
 .nav-input input {
@@ -37,7 +38,6 @@ nav {
   background-color: #f5f6f7;
   border: none;
   outline: none;
-  color: #dedfe0;
   font-size: 16px;
   border-radius: 5px;
 }
@@ -55,6 +55,9 @@ nav img {
   font-size: 16px;
 }
 
+.btns {
+  width: 35%;
+}
 .research-container {
   width: 633px;
   background-color: #f5f6f7;
@@ -67,7 +70,7 @@ nav img {
 #limit-select {
   position: absolute;
   top: 60px;
-  left: 1050px;
+  left: 76.5%;
   width: 130px;
   border: solid 1px white;
   color: white;
@@ -85,7 +88,8 @@ option:first-child {
   display: flex;
 }
 
-.btn-logs button {
+.btn-logs button,
+.bottom-btns > button {
   background-color: white;
   border: solid #2cb1ba 1px;
   color: #2cb1ba;
@@ -134,7 +138,7 @@ option:first-child {
   background-color: white;
   border-radius: 5px;
   position: absolute;
-  top: 90px;
+  top: 170px;
   left: 360px;
   border: #cccccc solid 1px;
   display: flex;
@@ -177,11 +181,38 @@ option:first-child {
   justify-content: center;
   align-items: center;
 }
+.bottom-btns {
+  display: none;
+  flex-direction: column;
+  padding: 0 20px;
+}
+.bottom-btns > button {
+  margin-top: 20px;
+  height: 45px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.bottom-btns > button:hover:not(:last-child) {
+  background-color: #2cb1ba;
+  color: white;
+}
+.bottom-btns > .btn-disconnect {
+  color: white;
+  background-color: #c2175b;
+  border: none;
+}
+.bottom-btns > .btn-disconnect:hover {
+  opacity: 0.5;
+}
 /* USERS - BOX */
 
 .users-container {
   display: flex;
-
+  max-height: 1470px;
+  overflow-y: scroll;
+  scrollbar-width: none;
   flex-wrap: wrap;
 }
 
@@ -607,4 +638,36 @@ label > svg {
 
 .purchase-done {
   margin-left: 20px;
+}
+
+@media (max-width: 1230px) {
+  .btn-sell button {
+    margin-left: unset;
+  }
+  .btns button {
+    width: unset;
+    height: 60px;
+  }
+  #limit-select {
+    top: 80px;
+  }
+  .block {
+    position: inherit;
+    top: unset;
+    left: unset;
+    width: 100%;
+    border: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .btns {
+    display: none;
+  }
+  #limit-select {
+    top: 13px;
+  }
+  .bottom-btns {
+    display: flex;
+  }
 }

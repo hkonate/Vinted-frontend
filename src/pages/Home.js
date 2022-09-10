@@ -1,9 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom'
 import banner from '../img/banner.jpg'
+import Pagination from '../components/Pagination'
 
-const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit }) => {
+const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit, token, fromPublish, setFromPublish, setUser }) => {
     const navigate = useNavigate()
-
     const handleLimit = event => {
         setLimit(event.target.value)
         if (currentPage >= pageNum) {
@@ -11,10 +11,7 @@ const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit }) => {
         }
     }
 
-    const pageTab = []
-    for (let i = 0; i < pageNum; i++) {
-        pageTab[i] = i + 1;
-    }
+
 
     return (
         < div className='Home'>
@@ -24,19 +21,17 @@ const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit }) => {
                 <option onClick={handleLimit} value="8">8</option>
                 <option onClick={handleLimit} value="12">12</option>
                 <option onClick={handleLimit} value="16">16</option>
-
             </select>
             <div className='banner'>
                 <img src={banner} alt="banner" />
-                <div className='block'>
-                    <p>Prêts à faire du tri dans vos placards ?</p>
-                    <button style={{ cursor: "pointer" }} onClick={() => { navigate('/publish') }}>Commencer à vendre</button>
-                </div>
+            </div>
+            <div className='block'>
+                <p>Prêts à faire du tri dans vos placards ?</p>
+                <button style={{ cursor: "pointer" }} onClick={() => { navigate('/publish') }}>Commencer à vendre</button>
             </div>
             <div className='users-container container'>
                 {data.offers.map((user, index) => {
                     return (
-
                         <div key={index} className='user-box'>
                             {user.owner && (
                                 user.owner.account.avatar &&
@@ -60,21 +55,36 @@ const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit }) => {
                 })}
 
             </div>
-            <div className='pagination-block '>
-                {currentPage > 1 && <span onClick={() => {
-                    setCurrentPage(currentPage - 1)
-                }}>&#60;</span>}
-
-                {pageTab.map((page, index) => {
-                    return <span className='each-page' onClick={() => {
-                        setCurrentPage(index + 1)
-                    }} key={index} style={{ "background-color": currentPage - 1 === index ? "#2cb1ba" : "white", color: currentPage - 1 === index ? "white" : "#2cb1ba" }}>{page}</span>
-                })}
-                {currentPage < pageNum && <span onClick={() => {
-                    setCurrentPage(currentPage + 1)
-                }}>&#62;</span>}
-
+            <div className="bottom-btns">
+                <button
+                    onClick={() => {
+                        if (fromPublish) {
+                            setFromPublish(false)
+                            navigate("/SignUp")
+                        }
+                    }}
+                    style={{ display: token === null ? "inline" : 'none' }}>S'incrire</button>
+                <button
+                    className=''
+                    onClick={() => {
+                        if (fromPublish) {
+                            setFromPublish(false)
+                            navigate("/SignUp")
+                        }
+                    }}
+                    style={{ display: token === null ? "inline" : 'none' }}>Se connecter</button>
+                <button
+                    className='btn-disconnect'
+                    onClick={() => {
+                        setUser(null)
+                        setFromPublish(false)
+                        navigate('/')
+                    }}
+                    style={{ display: token !== null ? 'inline' : "none" }}
+                >Se déconnecter</button>
             </div>
+
+            <Pagination currentPage={currentPage} pageNum={pageNum} setCurrentPage={setCurrentPage} />
         </div >
     )
 }

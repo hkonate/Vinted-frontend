@@ -10,6 +10,14 @@ const Publish = ({ token, setFromPublish }) => {
     const [picDisplay, setPicDisplay] = useState(null)
     const [revoke, setRevoke] = useState(true)
 
+    // const inputTitle = [
+    //     { name: "Title", placeholder: 'ex: Chemise Sézane verte' },
+    //     { name: "Décris ton article", placeholder: "ex: porté quelquefois, taille correctement" },
+    //     { name: "Marque", placeholder: "ex: Zara" },
+    //     { name: "Taille", placeholder: "ex: L/ 40 / 12" },
+    //     { name: "Couleur", placeholder: "ex: Fushia" },
+    //     { name: "Etat", placeholder: "'Neuf avec étiquette" },
+    //     { name: "Lieu", placeholder: "ex: Paris" }]
     const handleRedirection = () => {
         navigate('/login');
         setFromPublish(true);
@@ -72,6 +80,32 @@ const Publish = ({ token, setFromPublish }) => {
                             </div>
                         </div>
                         <div>
+                            {/* {
+                                inputTitle.map((obj, index) => {
+                                    <div className='space'>
+                                <span>{obj.name}</span>
+                                {
+                                    obj.name === "Décris ton article" ?
+                                    <textarea onChange={event => {
+                                        const newTab = [...newPublish]
+                                        newTab[index] = event.target.value;
+                                        setNewPublish(newTab)
+                                    }} name="descrip" rows="5" placeholder={obj.placeholder}></textarea>
+                                    :
+                                    <input onChange={event => {
+                                        const newTab = [...newPublish]
+                                        newTab[index] = event.target.value;
+                                        setNewPublish(newTab)
+                                    }} type="text" placeholder={obj.placeholder} />
+                                }
+                                <input onChange={event => {
+                                    const newTab = [...newPublish]
+                                    newTab[0] = event.target.value;
+                                    setNewPublish(newTab)
+                                }} type="text" placeholder='ex: Chemise Sézane verte' />
+                            </div>
+                                })
+                            } */}
                             <div className='space'>
                                 <span>Titre</span>
                                 <input onChange={event => {
@@ -149,7 +183,6 @@ const Publish = ({ token, setFromPublish }) => {
                                         <span>Je suis intéressé(e) par les échanges</span>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                         <div className='publish-btn'>
