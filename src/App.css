@@ -55,8 +55,17 @@ nav img {
   font-size: 16px;
 }
 
+.nav-slider {
+  display: flex;
+  align-items: center;
+}
+.nav-slider > span {
+  margin-right: 15px;
+}
+
 .btns {
   width: 35%;
+  margin-bottom: 60px;
 }
 .research-container {
   width: 633px;
@@ -65,6 +74,7 @@ nav img {
   display: flex;
   align-items: center;
   border-radius: 5px;
+  margin-bottom: 40px;
 }
 
 #limit-select {
@@ -82,6 +92,7 @@ nav img {
 option:first-child {
   display: none;
 }
+
 /* BUTTONS */
 .btns,
 .btn-logs {
@@ -122,7 +133,6 @@ option:first-child {
 /* HOME PAGE */
 
 .banner {
-  margin-top: 40px;
   height: 454px;
   position: relative;
 }
@@ -139,7 +149,7 @@ option:first-child {
   border-radius: 5px;
   position: absolute;
   top: 170px;
-  left: 360px;
+  left: 12%;
   border: #cccccc solid 1px;
   display: flex;
   flex-direction: column;
@@ -185,6 +195,7 @@ option:first-child {
   display: none;
   flex-direction: column;
   padding: 0 20px;
+  margin-top: 20px;
 }
 .bottom-btns > button {
   margin-top: 20px;
@@ -651,13 +662,6 @@ label > svg {
   #limit-select {
     top: 80px;
   }
-  .block {
-    position: inherit;
-    top: unset;
-    left: unset;
-    width: 100%;
-    border: none;
-  }
 }
 
 @media (max-width: 800px) {
@@ -669,5 +673,17 @@ label > svg {
   }
   .bottom-btns {
     display: flex;
+  }
+  .block {
+    position: inherit;
+    top: unset;
+    left: unset;
+    width: 100%;
+    border: none;
+  }
+}
+@media (max-width: 560px) {
+  #limit-select {
+    width: 100px;
   }
 }

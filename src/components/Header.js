@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import logo from '../img/logo.jpg'
 import { Link, useNavigate } from 'react-router-dom'
-
+import Slider from './Slider';
 
 const Header = ({ setUser, token, setFromPublish, fromPublish }) => {
     const navigate = useNavigate()
@@ -11,9 +11,14 @@ const Header = ({ setUser, token, setFromPublish, fromPublish }) => {
                 <img onClick={() => {
                     navigate('/')
                 }} src={logo} alt="logo" />
-                <div className='research-container'>
-                    <FontAwesomeIcon icon="magnifying-glass" />
-                    <input type="text" placeholder='Recherche des articles' />
+
+                <div className="nav-filter">
+                    <div className='research-container'>
+                        <FontAwesomeIcon icon="magnifying-glass" />
+                        <input type="text" placeholder='Recherche des articles' />
+                    </div>
+                    <Slider />
+
                 </div>
             </div>
             <div className='btns'>
