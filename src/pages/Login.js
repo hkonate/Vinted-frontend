@@ -1,9 +1,15 @@
 import axios from 'axios'
+import { useEffect } from 'react';
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
-const Login = ({ setUser, fromPublish, setUsername }) => {
+const Login = ({ states }) => {
+    const { setUser, fromPublish, setUsername, setHide, setHideBtns } = states
     const [errormsg, setErrorMsg] = useState();
     const [userData, setUserData] = useState("", "")
+    useEffect(() => {
+        setHideBtns([false, true, false])
+        setHide(true)
+    })
     const navigate = useNavigate()
     const handleConnect = async (event) => {
         try {

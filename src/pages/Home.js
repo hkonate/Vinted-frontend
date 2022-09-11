@@ -1,8 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import banner from '../img/banner.jpg'
 import Pagination from '../components/Pagination'
+import Buttons from '../components/Buttons';
 
-const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit, token, fromPublish, setFromPublish, setUser }) => {
+const Home = ({ states }) => {
+    const { data, currentPage, setCurrentPage, pageNum, setLimit } = states
     const navigate = useNavigate()
     const handleLimit = event => {
         setLimit(event.target.value)
@@ -55,35 +57,7 @@ const Home = ({ data, currentPage, setCurrentPage, pageNum, setLimit, token, fro
                 })}
 
             </div>
-            <div className="bottom-btns">
-                <button
-                    onClick={() => {
-                        if (fromPublish) {
-                            setFromPublish(false)
-                            navigate("/SignUp")
-                        }
-                    }}
-                    style={{ display: token === null ? "inline" : 'none' }}>S'incrire</button>
-                <button
-                    className=''
-                    onClick={() => {
-                        if (fromPublish) {
-                            setFromPublish(false)
-                            navigate("/SignUp")
-                        }
-                    }}
-                    style={{ display: token === null ? "inline" : 'none' }}>Se connecter</button>
-                <button
-                    className='btn-disconnect'
-                    onClick={() => {
-                        setUser(null)
-                        setFromPublish(false)
-                        navigate('/')
-                    }}
-                    style={{ display: token !== null ? 'inline' : "none" }}
-                >Se déconnecter</button>
-            </div>
-
+            <Buttons states={states} />
             <Pagination currentPage={currentPage} pageNum={pageNum} setCurrentPage={setCurrentPage} />
         </div >
     )

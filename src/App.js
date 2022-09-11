@@ -28,6 +28,11 @@ function App() {
   const [limit, setLimit] = useState(data.count)
   const [currentPage, setCurrentPage] = useState(1)
   const [username, setUsername] = useState(null)
+  const [sort, setSort] = useState("price-asc")
+  const [values, setValues] = useState([10, 100]);
+  const [hide, setHide] = useState(true);
+  const [hideBtns, setHideBtns] = useState([true, true, true])
+
 
   const pageNum = Math.floor(data.count / limit)
   const stripePromise = loadStripe("pk_test_51HCObyDVswqktOkX6VVcoA7V2sjOJCUB4FBt3EOiAdSz5vWudpWxwcSY8z2feWXBq6lwMgAb5IVZZ1p84ntLq03H00LDVc2RwP");
@@ -44,28 +49,50 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?page=${currentPage}&limit=${limit}`);
+      const response = await axios.get(`https://lereacteur-vinted-api.herokuapp.com/offers?page=${currentPage}&limit=${limit}&sort=${sort}&priceMin=${values[0]}&priceMax=${values[1]}`);
       setData(response.data);
       setIsLoading(false);
     }
     fetchData()
-  }, [currentPage, limit])
+  }, [currentPage, limit, sort, values])
 
+  const states = {
+    values,
+    setValues,
+    sort,
+    setSort,
+    setUser,
+    setFromPublish,
+    fromPublish,
+    token,
+    data,
+    limit,
+    currentPage,
+    setCurrentPage,
+    pageNum,
+    setLimit,
+    setHide,
+    hide,
+    setUsername,
+    hideBtns,
+    setHideBtns,
+    username,
+  }
   return (isLoading === true ?
     <div>En cours de chargement</div> :
     <Router>
       <div className="container">
-        <Header setUser={setUser} token={token} setFromPublish={setFromPublish} fromPublish={fromPublish} />
+        <Header states={states} />
       </div>
       <Routes>
-        <Route path='/' element={<Home setUser={setUser} setFromPublish={setFromPublish} fromPublish={fromPublish} token={token} data={data} limit={limit} currentPage={currentPage} setCurrentPage={setCurrentPage} pageNum={pageNum} setLimit={setLimit} />} />
-        <Route path="/Login" element={<Login setUser={setUser} fromPublish={fromPublish} setUsername={setUsername} />}></Route>
-        <Route path="/Signup" element={<SignUp setUser={setUser} />} />
-        <Route path='/Offer/:productId' element={<Offer />} />
-        <Route path='/publish' element={<Publish token={token} setFromPublish={setFromPublish} />}></Route>
+        <Route path='/' element={<Home states={states} />} />
+        <Route path="/Login" element={<Login states={states} />}></Route>
+        <Route path="/Signup" element={<SignUp states={states} />} />
+        <Route path='/Offer/:productId' element={<Offer states={states} />} />
+        <Route path='/publish' element={<Publish states={states} />}></Route>
 
         <Route path='/payment' element={<Elements stripe={stripePromise}>
-          <Payment username={username} token={token} />
+          <Payment states={states} />
         </Elements>}></Route>
       </Routes>
     </Router>)

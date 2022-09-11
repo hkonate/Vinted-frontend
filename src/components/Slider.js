@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
-const Slider = () => {
+const Slider = ({ states }) => {
+    const { setValues, values } = states
     const STEP = 1;
     const MIN = 0;
     const MAX = 500;
-    const [values, setValues] = useState([10, 100]);
 
     return (
         <div className="nav-slider">

@@ -1,15 +1,21 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom'
+import Buttons from '../components/Buttons';
 
-const Publish = ({ token, setFromPublish }) => {
+const Publish = ({ states }) => {
+    const { token, setFromPublish, setHide, setHideBtns } = states
     const [picture, setPicture] = useState(null)
     const navigate = useNavigate()
     const [newPublish, setNewPublish] = useState([null, null, null, null, null, null, null, null, false])
     const [picDisplay, setPicDisplay] = useState(null)
     const [revoke, setRevoke] = useState(true)
 
+    useEffect(() => {
+        setHideBtns([false, false, true])
+        setHide(true)
+    })
     // const inputTitle = [
     //     { name: "Title", placeholder: 'ex: Chemise Sézane verte' },
     //     { name: "Décris ton article", placeholder: "ex: porté quelquefois, taille correctement" },
@@ -190,6 +196,7 @@ const Publish = ({ token, setFromPublish }) => {
                         </div>
                     </form>
                 </div >
+                <Buttons states={states} />
             </div >) : handleRedirection())
 }
 

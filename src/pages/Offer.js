@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-const Offer = () => {
+import Buttons from '../components/Buttons'
+const Offer = ({ states }) => {
+    const { setHide, setHideBtns } = states
     const [data, setData] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const { productId } = useParams()
@@ -14,6 +16,10 @@ const Offer = () => {
         };
         fetchOffer();
     }, [productId])
+    useEffect(() => {
+        setHideBtns([false, false, false])
+        setHide(true)
+    })
     return (isLoading ? (<span>En cours de chargement... </span>) :
 
         <div className='Offer'>
@@ -50,7 +56,7 @@ const Offer = () => {
                         navigate('/payment', { state: { title: data.product_name, price: data.product_price } })
                     }}>Acheter</button>
                 </div>
-
+                <Buttons states={states} />
             </div>
         </div>
     )

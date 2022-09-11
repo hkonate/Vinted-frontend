@@ -1,8 +1,10 @@
 import { Navigate, useLocation } from "react-router-dom";
 import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from 'axios'
+import Buttons from "../components/Buttons";
 import { useState } from 'react'
-const Payment = ({ username, token }) => {
+const Payment = ({ states }) => {
+    const { username, token } = states
     const stripe = useStripe();
     const elements = useElements();
     const location = useLocation()
@@ -81,7 +83,7 @@ const Payment = ({ username, token }) => {
                     </form>}
 
                 </div>
-
+                <Buttons states={states} />
             </div>) : (<Navigate to='/login' />))
 }
 export default Payment

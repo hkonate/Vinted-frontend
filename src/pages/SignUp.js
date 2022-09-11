@@ -1,7 +1,12 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
-const SignUp = ({ setUser }) => {
+const SignUp = ({ states }) => {
+    const { setUser, setUsername, setHide, setHideBtns } = states
+    useEffect(() => {
+        setHideBtns([true, false, false])
+        setHide(true)
+    })
     const [userData, setUserData] = useState(["", "", "", false])
     const [errormgs, setErrorMsg] = useState()
     const navigate = useNavigate()
@@ -19,6 +24,7 @@ const SignUp = ({ setUser }) => {
                     "newsletter": userData[3]
                 })
             if (response.data) {
+                setUsername(userData[1])
                 setUser(response.data.token)
                 navigate('/')
             }
