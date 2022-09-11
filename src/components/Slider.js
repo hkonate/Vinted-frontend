@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Range, getTrackBackground } from "react-range";
 const Slider = () => {
     const STEP = 1;
-    const MIN = 10;
+    const MIN = 0;
     const MAX = 500;
-    const [values, setValues] = useState([MIN, 100]);
+    const [values, setValues] = useState([10, 100]);
 
     return (
         <div className="nav-slider">
@@ -57,17 +57,18 @@ const Slider = () => {
                             outline: "none",
                             border: isDragged ? null : "1px solid white",
                             backgroundColor: "#2cb1ba",
-
+                            display: "flex",
+                            justifyContent: "center",
                         }}
                     >
                         <div style={{
                             position: "absolute",
                             bottom: "20px",
-                            right: "-8px",
                             fontSize: "12px",
                             backgroundColor: "#2cb1ba",
                             color: "white",
                             padding: "4px",
+                            borderRadius: "4px"
                         }} id="output">
                             {values[index] + "€"}
                         </div>
