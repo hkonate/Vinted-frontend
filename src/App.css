@@ -26,6 +26,11 @@ nav {
   width: 100%;
 }
 
+.nav-filter {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 .nav-input {
   display: flex;
   align-items: center;
@@ -58,9 +63,37 @@ nav img {
 .nav-slider {
   display: flex;
   align-items: center;
+  width: 50%;
 }
-.nav-slider > span {
+.nav-slider > span,
+.nav-filter > span {
   margin-right: 15px;
+  font-size: 12px;
+}
+
+.nav-desc-asc {
+  margin-right: 30px;
+  background-color: #2cb1ba;
+  width: 42px;
+  height: 20px;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.nav-desc-asc > div {
+  height: 18px;
+  width: 18px;
+  border: 1px solid #666;
+  border-radius: 100%;
+  position: relative;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  transition: right 0.2s ease-in-out 0s;
 }
 
 .btns {
